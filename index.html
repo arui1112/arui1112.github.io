@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Best free AI tools collection. Find the top AI image generators, video editors, writing assistants and more. Updated weekly.">
+    <meta name="keywords" content="AI tools, free AI, image generator, video editor, writing assistant">
+    <meta name="author" content="AI Tools Hub">
+    <title>AI Tools Hub - Best Free AI Tools Collection 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1a1a2e;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Search Box */
+        .search-box {
+            max-width: 500px;
+            margin: -30px auto 30px;
+            padding: 0 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* Category Section */
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-left: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Tool Card */
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            background: #f0f2f5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .tool-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 文字类图标（首字母）的样式 */
+        .tool-icon.text-icon {
+            font-size: 20px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tool-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f0f2f5;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #667eea;
+        }
+
+        .visit-btn {
+            display: inline-block;
+            margin-top: 12px;
+            background: #667eea;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+            .header {
+                padding: 30px 16px;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Tools Hub</h1>
+            <p>Curated list of the best free AI tools for creators, marketers, and developers</p>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search tools... (e.g., image generator, video editor)">
+        </div>
+
+        <!-- Image Generation Category -->
+        <div class="category" data-category="image">
+            <h2 class="category-title">🎨 AI Image Generators</h2>
+            <div class="tools-grid" id="imageGrid"></div>
+        </div>
+
+        <!-- Video/Audio Category -->
+        <div class="category" data-category="video">
+            <h2 class="category-title">🎵 AI Video & Audio Tools</h2>
+            <div class="tools-grid" id="videoGrid"></div>
+        </div>
+
+        <!-- Writing Category -->
+        <div class="category" data-category="writing">
+            <h2 class="category-title">✍️ AI Writing Assistants</h2>
+            <div class="tools-grid" id="writingGrid"></div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 AI Tools Hub | Last updated: May 2025 | <a href="#" style="color:#667eea">Submit a tool</a></p>
+        </div>
+    </div>
+
+    <script>
+        // 辅助函数：渲染图标（支持图片URL、emoji、文字）
+        function renderIcon(icon, name) {
+            if (!icon) {
+                // 如果没有图标，显示首字母
+                return `<div class="tool-icon text-icon">${name.charAt(0).toUpperCase()}</div>`;
+            }
+            // 如果是http开头的图片链接
+            if (icon.startsWith('http')) {
+                return `<div class="tool-icon"><img src="${icon}" alt="${name}" loading="lazy"></div>`;
+            }
+            // 如果是emoji或普通文字，且长度<=2
+            if (icon.length <= 2) {
+                return `<div class="tool-icon">${icon}</div>`;
+            }
+            // 其他情况当作文字处理
+            return `<div class="tool-icon text-icon">${icon.substring(0, 2)}</div>`;
+        }
+
+        // Tool database - 在这里添加你的推广链接和图标
+        const toolsData = {
+            image: [
+                {
+                    name: "Midjourney",
+                    desc: "High-quality AI image generation with artistic styles. Best for professional designers.",
+                    tags: ["Paid", "Best Quality"],
+                    url: "https://www.midjourney.com/",
+                    icon: "🎨"  // 可换成图片URL，如 "https://example.com/logo.png"
+                },
+                {
+                    name: "Leonardo.ai",
+                    desc: "Free AI image generator with tons of styles and models. Great for game assets.",
+                    tags: ["Free", "Game Art"],
+                    url: "https://leonardo.ai/",
+                    icon: "🦁"
+                },
+                {
+                    name: "Playground AI",
+                    desc: "Create and edit images with simple prompts. 1000+ styles available.",
+                    tags: ["Free", "Easy"],
+                    url: "https://playgroundai.com/",
+                    icon: "🖼️"
+                }
+            ],
+            video: [
+                {
+                    name: "Runway ML",
+                    desc: "AI video editing and generation. Remove backgrounds, generate clips.",
+                    tags: ["Video", "Pro"],
+                    url: "https://runwayml.com/",
+                    icon: "🎬"
+                },
+                {
+                    name: "ElevenLabs",
+                    desc: "Ultra-realistic AI voice generator. Clone voices, text to speech.",
+                    tags: ["Voice", "Best"],
+                    url: "https://elevenlabs.io/",
+                    icon: "🎤"
+                },
+                {
+                    name: "Kaiber",
+                    desc: "Turn your images and text into stunning AI videos.",
+                    tags: ["Animation", "Creative"],
+                    url: "https://kaiber.ai/",
+                    icon: "✨"
+                }
+            ],
+            writing: [
+                {
+                    name: "ChatGPT",
+                    desc: "The most popular AI chatbot. Write, code, brainstorm, translate.",
+                    tags: ["Free", "Multi-purpose"],
+                    url: "https://chat.openai.com/",
+                    icon: "💬"
+                },
+                {
+                    name: "Jasper AI",
+                    desc: "AI writing assistant optimized for marketing and business content.",
+                    tags: ["Paid", "Marketing"],
+                    url: "https://www.jasper.ai/",
+                    icon: "📝"
+                },
+                {
+                    name: "Copy.ai",
+                    desc: "Free AI copywriting tool for social media, ads, and blogs.",
+                    tags: ["Free", "Copywriting"],
+                    url: "https://www.copy.ai/",
+                    icon: "✏️"
+                },
+                {
+                    name: "Grammarly",
+                    desc: "AI-powered grammar checker and writing enhancement.",
+                    tags: ["Grammar", "Free"],
+                    url: "https://www.grammarly.com/",
+                    icon: "📖"
+                }
+            ]
+        };
+
+        function renderTools(category, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            const tools = toolsData[category];
+            if (!tools) return;
+            
+            container.innerHTML = tools.map(tool => `
+                <a href="${tool.url}" class="tool-card" target="_blank" rel="noopener noreferrer nofollow">
+                    ${renderIcon(tool.icon, tool.name)}
+                    <div class="tool-name">${tool.name}</div>
+                    <div class="tool-desc">${tool.desc}</div>
+                    <div class="tool-tags">
+                        ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <span class="visit-btn">Visit →</span>
+                </a>
+            `).join('');
+        }
+
+        // Search functionality
+        function searchTools() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const allCategories = ['image', 'video', 'writing'];
+            
+            allCategories.forEach(cat => {
+                const container = document.getElementById(`${cat}Grid`);
+                const tools = toolsData[cat];
+                if (!container || !tools) return;
+                
+                const filtered = tools.filter(tool => 
+                    tool.name.toLowerCase().includes(searchTerm) || 
+                    tool.desc.toLowerCase().includes(searchTerm) ||
+                    tool.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+                
+                if (searchTerm === '') {
+                    renderTools(cat, `${cat}Grid`);
+                } else {
+                    container.innerHTML = filtered.map(tool => `
+                        <a href="${tool.url}" class="tool-card" target="_blank" rel="noopener noreferrer nofollow">
+                            ${renderIcon(tool.icon, tool.name)}
+                            <div class="tool-name">${tool.name}</div>
+                            <div class="tool-desc">${tool.desc}</div>
+                            <div class="tool-tags">
+                                ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                            <span class="visit-btn">Visit →</span>
+                        </a>
+                    `).join('');
+                }
+            });
+        }
+
+        // 初始化页面
+        renderTools('image', 'imageGrid');
+        renderTools('video', 'videoGrid');
+        renderTools('writing', 'writingGrid');
+        
+        // 绑定搜索事件
+        document.getElementById('searchInput').addEventListener('input', searchTools);
+    </script>
+</body>
+</html>
