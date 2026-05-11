@@ -27,7 +27,6 @@
             margin: 0 auto;
         }
 
-        /* Header */
         .header {
             text-align: center;
             padding: 40px 20px;
@@ -47,7 +46,6 @@
             opacity: 0.9;
         }
 
-        /* Search Box */
         .search-box {
             max-width: 500px;
             margin: -30px auto 30px;
@@ -64,7 +62,6 @@
             outline: none;
         }
 
-        /* Category Section */
         .category {
             margin-bottom: 40px;
         }
@@ -77,14 +74,12 @@
             border-left: 4px solid #667eea;
         }
 
-        /* Tools Grid */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        /* Tool Card */
         .tool-card {
             background: white;
             border-radius: 16px;
@@ -121,7 +116,6 @@
             object-fit: cover;
         }
 
-        /* 文字类图标（首字母）的样式 */
         .tool-icon.text-icon {
             font-size: 20px;
             font-weight: 600;
@@ -166,7 +160,6 @@
             font-weight: 500;
         }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding: 30px;
@@ -174,6 +167,76 @@
             border-top: 1px solid #e0e0e0;
             font-size: 0.8rem;
             color: #888;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 400px;
+            margin: 20px;
+            padding: 30px;
+            border-radius: 24px;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal p {
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .modal a {
+            color: #667eea;
+            text-decoration: none;
         }
 
         @media (max-width: 640px) {
@@ -185,6 +248,10 @@
             }
             .header h1 {
                 font-size: 1.5rem;
+            }
+            .modal-content {
+                margin: 16px;
+                padding: 24px;
             }
         }
     </style>
@@ -200,135 +267,145 @@
             <input type="text" id="searchInput" placeholder="🔍 Search tools... (e.g., image generator, video editor)">
         </div>
 
-        <!-- Image Generation Category -->
-        <div class="category" data-category="image">
+        <div class="category">
             <h2 class="category-title">🎨 AI Image Generators</h2>
             <div class="tools-grid" id="imageGrid"></div>
         </div>
 
-        <!-- Video/Audio Category -->
-        <div class="category" data-category="video">
+        <div class="category">
             <h2 class="category-title">🎵 AI Video & Audio Tools</h2>
             <div class="tools-grid" id="videoGrid"></div>
         </div>
 
-        <!-- Writing Category -->
-        <div class="category" data-category="writing">
+        <div class="category">
             <h2 class="category-title">✍️ AI Writing Assistants</h2>
             <div class="tools-grid" id="writingGrid"></div>
         </div>
 
+        <div class="category">
+            <h2 class="category-title">💻 AI Coding Tools</h2>
+            <div class="tools-grid" id="codingGrid"></div>
+        </div>
+
+        <div class="category">
+            <h2 class="category-title">🔍 AI Search & Productivity</h2>
+            <div class="tools-grid" id="productivityGrid"></div>
+        </div>
+
         <div class="footer">
-            <p>© 2025 AI Tools Hub | Last updated: May 2025 | <a href="#" style="color:#667eea">Submit a tool</a></p>
+            <div class="footer-links">
+                <a href="#" id="aboutLink">About</a> |
+                <a href="#" id="contactLink">Contact</a> |
+                <a href="#" id="submitLink">Submit a Tool</a>
+            </div>
+            <p>© 2025 AI Tools Hub | Last updated: May 2025</p>
+        </div>
+    </div>
+
+    <!-- About 弹窗 -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeAbout">&times;</span>
+            <h2>About AI Tools Hub</h2>
+            <p>AI Tools Hub is a curated directory of the best AI tools for creators, marketers, and developers. We review and recommend tools that help you work smarter and faster.</p>
+            <p>Our mission is to help you discover the right AI tools for your workflow. We update the directory weekly with new and trending tools.</p>
+            <p>📧 <a href="mailto:contact@aitools111.sbs">contact@aitools111.sbs</a></p>
+        </div>
+    </div>
+
+    <!-- Contact 弹窗 -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeContact">&times;</span>
+            <h2>Contact Us</h2>
+            <p><strong>📧 Email:</strong><br>
+            <a href="mailto:contact@aitools111.sbs">contact@aitools111.sbs</a></p>
+            <p><strong>📝 Submit a Tool:</strong><br>
+            Send us an email with the tool name, description, and URL. We'll review and add it to our directory.</p>
+            <p><strong>⏱ Response Time:</strong><br>
+            We reply within 24-48 hours.</p>
+        </div>
+    </div>
+
+    <!-- Submit Tool 弹窗 -->
+    <div id="submitModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeSubmit">&times;</span>
+            <h2>Submit a Tool</h2>
+            <p>Have an AI tool you want to share? Send us an email with:</p>
+            <ul style="margin-left: 20px; color: #666; line-height: 1.8;">
+                <li>Tool name</li>
+                <li>Brief description</li>
+                <li>Website URL</li>
+                <li>Free/Paid</li>
+            </ul>
+            <p>📧 <a href="mailto:contact@aitools111.sbs?subject=Tool%20Submission">contact@aitools111.sbs</a></p>
         </div>
     </div>
 
     <script>
-        // 辅助函数：渲染图标（支持图片URL、emoji、文字）
+        // 图标渲染函数
         function renderIcon(icon, name) {
             if (!icon) {
-                // 如果没有图标，显示首字母
                 return `<div class="tool-icon text-icon">${name.charAt(0).toUpperCase()}</div>`;
             }
-            // 如果是http开头的图片链接
             if (icon.startsWith('http')) {
                 return `<div class="tool-icon"><img src="${icon}" alt="${name}" loading="lazy"></div>`;
             }
-            // 如果是emoji或普通文字，且长度<=2
             if (icon.length <= 2) {
                 return `<div class="tool-icon">${icon}</div>`;
             }
-            // 其他情况当作文字处理
             return `<div class="tool-icon text-icon">${icon.substring(0, 2)}</div>`;
         }
 
-        // Tool database - 在这里添加你的推广链接和图标
+        // 工具数据
         const toolsData = {
             image: [
-                {
-                    name: "Midjourney",
-                    desc: "High-quality AI image generation with artistic styles. Best for professional designers.",
-                    tags: ["Paid", "Best Quality"],
-                    url: "https://www.midjourney.com/",
-                    icon: "🎨"  // 可换成图片URL，如 "https://example.com/logo.png"
-                },
-                {
-                    name: "Leonardo.ai",
-                    desc: "Free AI image generator with tons of styles and models. Great for game assets.",
-                    tags: ["Free", "Game Art"],
-                    url: "https://leonardo.ai/",
-                    icon: "🦁"
-                },
-                {
-                    name: "Playground AI",
-                    desc: "Create and edit images with simple prompts. 1000+ styles available.",
-                    tags: ["Free", "Easy"],
-                    url: "https://playgroundai.com/",
-                    icon: "🖼️"
-                }
+                { name: "Midjourney", desc: "High-quality AI image generation with artistic styles. Best for professional designers.", tags: ["Paid", "Best Quality"], url: "https://www.midjourney.com/", icon: "🎨" },
+                { name: "Leonardo.ai", desc: "Free AI image generator with tons of styles and models. Great for game assets.", tags: ["Free", "Game Art"], url: "https://leonardo.ai/", icon: "🦁" },
+                { name: "Playground AI", desc: "Create and edit images with simple prompts. 1000+ styles available.", tags: ["Free", "Easy"], url: "https://playgroundai.com/", icon: "🖼️" },
+                { name: "Ideogram", desc: "Best text rendering in images. Perfect for posters, logos, and typography-heavy designs.", tags: ["Free", "Text"], url: "https://ideogram.ai/", icon: "🎨" },
+                { name: "Recraft", desc: "AI vector graphics generator. Create logos, icons, and illustrations.", tags: ["Free", "Vector"], url: "https://www.recraft.ai/", icon: "🎨" },
+                { name: "Krea AI", desc: "Real-time AI generation. Draw and generate simultaneously.", tags: ["Free Trial", "Real-time"], url: "https://www.krea.ai/", icon: "🎨" }
             ],
             video: [
-                {
-                    name: "Runway ML",
-                    desc: "AI video editing and generation. Remove backgrounds, generate clips.",
-                    tags: ["Video", "Pro"],
-                    url: "https://runwayml.com/",
-                    icon: "🎬"
-                },
-                {
-                    name: "ElevenLabs",
-                    desc: "Ultra-realistic AI voice generator. Clone voices, text to speech.",
-                    tags: ["Voice", "Best"],
-                    url: "https://elevenlabs.io/",
-                    icon: "🎤"
-                },
-                {
-                    name: "Kaiber",
-                    desc: "Turn your images and text into stunning AI videos.",
-                    tags: ["Animation", "Creative"],
-                    url: "https://kaiber.ai/",
-                    icon: "✨"
-                }
+                { name: "Runway ML", desc: "AI video editing and generation. Remove backgrounds, generate clips.", tags: ["Video", "Pro"], url: "https://runwayml.com/", icon: "🎬" },
+                { name: "ElevenLabs", desc: "Ultra-realistic AI voice generator. Clone voices, text to speech.", tags: ["Voice", "Best"], url: "https://elevenlabs.io/", icon: "🎤" },
+                { name: "Kaiber", desc: "Turn your images and text into stunning AI videos.", tags: ["Animation", "Creative"], url: "https://kaiber.ai/", icon: "✨" },
+                { name: "Pika Labs", desc: "Generate stunning videos from text or images. Latest 2.0 model is incredible.", tags: ["Free", "Trending"], url: "https://pika.art/", icon: "🎬" },
+                { name: "Kling", desc: "High-quality AI video generator. Supports 2-minute generation.", tags: ["Free Trial", "Fast"], url: "https://kling.kuaishou.com/", icon: "🎬" },
+                { name: "Luma Dream Machine", desc: "High-quality, fast AI video generation from text or images.", tags: ["Free Trial", "Fast"], url: "https://lumalabs.ai/", icon: "🎬" },
+                { name: "Suno", desc: "Generate full songs with lyrics and vocals. Type a prompt, get a song.", tags: ["Free", "Music"], url: "https://suno.com/", icon: "🎤" },
+                { name: "Udio", desc: "High-quality AI music generation. Create professional-sounding tracks.", tags: ["Free", "Music"], url: "https://www.udio.com/", icon: "🎤" }
             ],
             writing: [
-                {
-                    name: "ChatGPT",
-                    desc: "The most popular AI chatbot. Write, code, brainstorm, translate.",
-                    tags: ["Free", "Multi-purpose"],
-                    url: "https://chat.openai.com/",
-                    icon: "💬"
-                },
-                {
-                    name: "Jasper AI",
-                    desc: "AI writing assistant optimized for marketing and business content.",
-                    tags: ["Paid", "Marketing"],
-                    url: "https://www.jasper.ai/",
-                    icon: "📝"
-                },
-                {
-                    name: "Copy.ai",
-                    desc: "Free AI copywriting tool for social media, ads, and blogs.",
-                    tags: ["Free", "Copywriting"],
-                    url: "https://www.copy.ai/",
-                    icon: "✏️"
-                },
-                {
-                    name: "Grammarly",
-                    desc: "AI-powered grammar checker and writing enhancement.",
-                    tags: ["Grammar", "Free"],
-                    url: "https://www.grammarly.com/",
-                    icon: "📖"
-                }
+                { name: "ChatGPT", desc: "The most popular AI chatbot. Write, code, brainstorm, translate.", tags: ["Free", "Multi-purpose"], url: "https://chat.openai.com/", icon: "💬" },
+                { name: "Jasper AI", desc: "AI writing assistant optimized for marketing and business content.", tags: ["Paid", "Marketing"], url: "https://www.jasper.ai/", icon: "📝" },
+                { name: "Copy.ai", desc: "Free AI copywriting tool for social media, ads, and blogs.", tags: ["Free", "Copywriting"], url: "https://www.copy.ai/", icon: "✏️" },
+                { name: "Grammarly", desc: "AI-powered grammar checker and writing enhancement.", tags: ["Grammar", "Free"], url: "https://www.grammarly.com/", icon: "📖" },
+                { name: "Claude", desc: "Anthropic's AI assistant. Great for long context and complex reasoning.", tags: ["Free", "Best"], url: "https://claude.ai/", icon: "💬" },
+                { name: "DeepSeek", desc: "Free Chinese AI with strong reasoning and coding abilities.", tags: ["Free", "Chinese"], url: "https://www.deepseek.com/", icon: "💬" },
+                { name: "Perplexity AI", desc: "AI search engine that cites sources. Great for research.", tags: ["Free", "Search"], url: "https://www.perplexity.ai/", icon: "🔍" }
+            ],
+            coding: [
+                { name: "Cursor", desc: "AI code editor that helps you write code faster. Best for developers.", tags: ["Free", "Editor"], url: "https://cursor.com/", icon: "💻" },
+                { name: "v0.dev", desc: "Generate React components with AI. Built by Vercel.", tags: ["Free", "Frontend"], url: "https://v0.dev/", icon: "💻" },
+                { name: "Bolt.new", desc: "Online full-stack AI development. One-click deploy.", tags: ["Free Trial", "Full-stack"], url: "https://bolt.new/", icon: "💻" },
+                { name: "Replit AI", desc: "AI-powered coding in the browser. Write, run, deploy.", tags: ["Free", "Online"], url: "https://replit.com/", icon: "💻" }
+            ],
+            productivity: [
+                { name: "Gamma", desc: "AI presentation generator. Create beautiful slides from text.", tags: ["Free", "PPT"], url: "https://gamma.app/", icon: "📊" },
+                { name: "Napkin", desc: "AI diagram and flowchart generator. Turn text into visuals.", tags: ["Free", "Diagram"], url: "https://www.napkin.ai/", icon: "📊" },
+                { name: "Otter.ai", desc: "AI meeting transcription and notes. Real-time summaries.", tags: ["Free Trial", "Meeting"], url: "https://otter.ai/", icon: "📊" },
+                { name: "Metaso", desc: "Chinese AI search engine. No ads, clean interface.", tags: ["Free", "Chinese"], url: "https://metaso.cn/", icon: "🔍" }
             ]
         };
 
         function renderTools(category, containerId) {
             const container = document.getElementById(containerId);
             if (!container) return;
-            
             const tools = toolsData[category];
             if (!tools) return;
-            
             container.innerHTML = tools.map(tool => `
                 <a href="${tool.url}" class="tool-card" target="_blank" rel="noopener noreferrer nofollow">
                     ${renderIcon(tool.icon, tool.name)}
@@ -342,22 +419,18 @@
             `).join('');
         }
 
-        // Search functionality
         function searchTools() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const allCategories = ['image', 'video', 'writing'];
-            
+            const allCategories = ['image', 'video', 'writing', 'coding', 'productivity'];
             allCategories.forEach(cat => {
                 const container = document.getElementById(`${cat}Grid`);
                 const tools = toolsData[cat];
                 if (!container || !tools) return;
-                
                 const filtered = tools.filter(tool => 
                     tool.name.toLowerCase().includes(searchTerm) || 
                     tool.desc.toLowerCase().includes(searchTerm) ||
                     tool.tags.some(tag => tag.toLowerCase().includes(searchTerm))
                 );
-                
                 if (searchTerm === '') {
                     renderTools(cat, `${cat}Grid`);
                 } else {
@@ -376,13 +449,43 @@
             });
         }
 
-        // 初始化页面
         renderTools('image', 'imageGrid');
         renderTools('video', 'videoGrid');
         renderTools('writing', 'writingGrid');
-        
-        // 绑定搜索事件
+        renderTools('coding', 'codingGrid');
+        renderTools('productivity', 'productivityGrid');
         document.getElementById('searchInput').addEventListener('input', searchTools);
+
+        // 弹窗功能
+        const aboutModal = document.getElementById('aboutModal');
+        const contactModal = document.getElementById('contactModal');
+        const submitModal = document.getElementById('submitModal');
+        const aboutLink = document.getElementById('aboutLink');
+        const contactLink = document.getElementById('contactLink');
+        const submitLink = document.getElementById('submitLink');
+
+        aboutLink.onclick = (e) => {
+            e.preventDefault();
+            aboutModal.style.display = 'flex';
+        };
+        contactLink.onclick = (e) => {
+            e.preventDefault();
+            contactModal.style.display = 'flex';
+        };
+        submitLink.onclick = (e) => {
+            e.preventDefault();
+            submitModal.style.display = 'flex';
+        };
+
+        document.getElementById('closeAbout').onclick = () => aboutModal.style.display = 'none';
+        document.getElementById('closeContact').onclick = () => contactModal.style.display = 'none';
+        document.getElementById('closeSubmit').onclick = () => submitModal.style.display = 'none';
+
+        window.onclick = (e) => {
+            if (e.target === aboutModal) aboutModal.style.display = 'none';
+            if (e.target === contactModal) contactModal.style.display = 'none';
+            if (e.target === submitModal) submitModal.style.display = 'none';
+        };
     </script>
 </body>
 </html>
