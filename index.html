@@ -6,7 +6,7 @@
     <meta name="description" content="Best free AI tools collection. Find the top AI image generators, video editors, writing assistants and more. Updated weekly.">
     <meta name="keywords" content="AI tools, free AI, image generator, video editor, writing assistant">
     <meta name="author" content="AI Tools Hub">
-    <title>AI Tools Hub - Best Free AI Tools Collection 2025</title>
+    <title>AI Tools Hub - Best Free AI Tools Collection 2026</title>
     <style>
         * {
             margin: 0;
@@ -186,7 +186,7 @@
             text-decoration: underline;
         }
 
-        /* 弹窗样式 */
+        /* Modal 弹窗样式 */
         .modal {
             display: none;
             position: fixed;
@@ -298,7 +298,7 @@
                 <a href="#" id="contactLink">Contact</a> |
                 <a href="#" id="submitLink">Submit a Tool</a>
             </div>
-            <p>© 2025 AI Tools Hub | Last updated: May 2025</p>
+            <p>© <span id="currentYear"></span> AI Tools Hub | Last updated: <span id="lastUpdated"></span></p>
         </div>
     </div>
 
@@ -309,7 +309,7 @@
             <h2>About AI Tools Hub</h2>
             <p>AI Tools Hub is a curated directory of the best AI tools for creators, marketers, and developers. We review and recommend tools that help you work smarter and faster.</p>
             <p>Our mission is to help you discover the right AI tools for your workflow. We update the directory weekly with new and trending tools.</p>
-            <p>📧 <a href="mailto:aitools111.sbs@outlook.com">aitools111.sbs@outlook.com</a></p>
+            <p>📧 <a href="mailto:contact@aitools111.sbs">contact@aitools111.sbs</a></p>
         </div>
     </div>
 
@@ -319,7 +319,7 @@
             <span class="modal-close" id="closeContact">&times;</span>
             <h2>Contact Us</h2>
             <p><strong>📧 Email:</strong><br>
-            <a href="mailto:aitools111.sbs@outlook.com">aitools111.sbs@outlook.com</a></p>
+            <a href="mailto:contact@aitools111.sbs">contact@aitools111.sbs</a></p>
             <p><strong>📝 Submit a Tool:</strong><br>
             Send us an email with the tool name, description, and URL. We'll review and add it to our directory.</p>
             <p><strong>⏱ Response Time:</strong><br>
@@ -339,11 +339,17 @@
                 <li>Website URL</li>
                 <li>Free/Paid</li>
             </ul>
-            <p>📧 <a href="mailto:aitools111.sbs@outlook.com?subject=Tool%20Submission">aitools111.sbs@outlook.com</a></p>
+            <p>📧 <a href="mailto:contact@aitools111.sbs?subject=Tool%20Submission">contact@aitools111.sbs</a></p>
         </div>
     </div>
 
     <script>
+        // 自动更新年份和最后更新月份
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const now = new Date();
+        document.getElementById('lastUpdated').innerText = months[now.getMonth()] + ' ' + now.getFullYear();
+
         // 图标渲染函数
         function renderIcon(icon, name) {
             if (!icon) {
