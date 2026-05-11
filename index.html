@@ -307,16 +307,16 @@
         <!-- 推荐工具板块（手动指定的高亮工具） -->
         <div class="featured-section" id="recommendedSection">
             <div class="section-header">
-                <h2 class="section-title">⭐ 编辑推荐</h2>
+                <h2 class="section-title">⭐ ⭐ Editor's Picks</h2>
                 <a href="#" class="section-link" onclick="scrollToCategory('writing'); return false;">查看全部 →</a>
             </div>
             <div class="featured-grid" id="recommendedGrid"></div>
         </div>
 
-        <!-- 最新工具板块（自动展示最新添加的4个工具） -->
+        <!--  🆕 Latest Tools板块（自动展示最新添加的4个工具） -->
         <div class="featured-section">
             <div class="section-header">
-                <h2 class="section-title">🆕 最新工具</h2>
+                <h2 class="section-title">🆕  🆕 Latest Tools</h2>
             </div>
             <div class="featured-grid" id="newToolsGrid"></div>
         </div>
@@ -324,7 +324,7 @@
         <!-- 热门工具板块（手动指定的高热度工具） -->
         <div class="featured-section">
             <div class="section-header">
-                <h2 class="section-title">🔥 热门工具</h2>
+                <h2 class="section-title">🔥 Trending</h2>
             </div>
             <div class="featured-grid" id="hotToolsGrid"></div>
         </div>
@@ -427,11 +427,11 @@
         };
 
         // ============================================================
-        // 推荐、热门、最新工具配置（手动指定工具名称）
+        // 推荐、热门、 🆕 Latest Tools配置（手动指定工具名称）
         // ============================================================
-        const recommendedNames = ["ChatGPT", "Midjourney", "Pika Labs"];  // 编辑推荐
+        const recommendedNames = ["ChatGPT", "Midjourney", "Pika Labs"];  // ⭐ Editor's Picks
         const hotNames = ["ChatGPT", "Midjourney", "Claude", "Perplexity AI"];  // 热门工具
-        // 最新工具自动取每个分类中 date 最新的前几个
+        //  🆕 Latest Tools自动取每个分类中 date 最新的前几个
 
         // 辅助函数：从所有工具中按名称查找
         function findToolByName(name) {
@@ -442,7 +442,7 @@
             return null;
         }
 
-        // 获取最新工具（按 date 排序）
+        // 获取 🆕 Latest Tools（按 date 排序）
         function getNewestTools(limit = 4) {
             const allTools = [];
             for (let cat in toolsData) {
